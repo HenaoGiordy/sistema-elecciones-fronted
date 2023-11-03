@@ -5,12 +5,10 @@
 
     <span class="example-spacer"></span>
     
-    <button mat-button routerLink="/dashboard">Dashboard</button>
-    <button mat-button routerLink="/dashboard/usuarios">Usuarios</button>
-    <button mat-button routerLink="/dashboard/resultados">Resultados</button>
+    <button mat-button *ngFor="let item of menu" [routerLink]="[item.redirect]">{{item.nombre}}</button>
     <span class="example-spacer"></span>
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/logout">
         <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>
