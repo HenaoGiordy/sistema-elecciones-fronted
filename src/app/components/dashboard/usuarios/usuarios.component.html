@@ -1,1 +1,36 @@
-<p>usuarios works!</p>
+<div class="contenedor">
+    <h2 style="text-align: center; margin-top: 20px;">CANDIDATOS</h2>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="numero">
+          <th mat-header-cell *matHeaderCellDef> Número </th>
+          <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="programa">
+          <th mat-header-cell *matHeaderCellDef> Programa </th>
+          <td mat-cell *matCellDef="let element"> {{element.programa}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Código </th>
+          <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+</div>

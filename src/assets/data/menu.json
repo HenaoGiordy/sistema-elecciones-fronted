@@ -4,7 +4,7 @@
         "redirect": "/dashboard"
     },
     {
-        "nombre": "Usuarios",
+        "nombre": "Candidatos",
         "redirect": "/dashboard/usuarios"
     },
     {
