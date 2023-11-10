@@ -8,7 +8,7 @@ import {  Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-
+  
   
   constructor(private http:HttpClient) { 
     
@@ -21,10 +21,11 @@ export class UsuarioService {
   }
 
   
+  buscarUsuario(id:String):Observable<Candidato>{
+    return this.http.get<Candidato>(`http://localhost:8080/usuario/find/${id}`)
+  }
 
   eliminarUsuario(index:number){
     
-    
-
   }
 }
