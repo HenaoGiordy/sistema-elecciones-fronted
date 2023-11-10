@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { ResultadosComponent } from './resultados/resultados.component';
+
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ResultadosComponent } from './resultados/resultados.component';
     InicioComponent,
     NavbarComponent,
     UsuariosComponent,
-    ResultadosComponent
+    
   ],
   imports: [
     CommonModule,

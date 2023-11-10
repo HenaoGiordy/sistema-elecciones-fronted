@@ -1,15 +1,12 @@
 [
     {
         "nombre": "Dashboard",
-        "redirect": "/dashboard"
+        "redirect": "/dashboard/inicio"
     },
     {
         "nombre": "Candidatos",
         "redirect": "/dashboard/usuarios"
-    },
-    {
-        "nombre": "Resultados",
-        "redirect": "/dashboard/resultados"
     }
+    
     
 ]

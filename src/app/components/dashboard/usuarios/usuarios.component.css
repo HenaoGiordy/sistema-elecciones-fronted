@@ -5,3 +5,21 @@ table {
 .contenedor{
     margin: 0 20%;
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+td, th{
+  text-align: center;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.addCandidatos{
+  display: flex;
+  justify-content: space-around;
+}
