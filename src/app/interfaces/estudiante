@@ -1,6 +1,0 @@
-export interface Estudiante{
-  nombre: string;
-  programa: string;
-  codigo: number;
-  
-}

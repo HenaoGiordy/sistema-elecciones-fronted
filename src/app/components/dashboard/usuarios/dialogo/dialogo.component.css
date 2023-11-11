@@ -11,8 +11,11 @@
 }
 
 .bottom{
-    display: flex;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: auto  auto;
     justify-content: center;
+    gap: 10px;
 }
 
 .buscar{

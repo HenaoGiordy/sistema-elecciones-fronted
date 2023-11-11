@@ -1,0 +1,15 @@
+.container_dash{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}

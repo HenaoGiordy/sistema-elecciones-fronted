@@ -1,30 +1,38 @@
 <h1 mat-dialog-title style="text-align: center;">AGREGAR CANDIDATO</h1>
 <div mat-dialog-content>
-    <div class="formulario">
+    <div class="formulario" >
         
         
-        <div class="campos">
+        <div  class="campos">
+            
             <label class="c1">Buscar Estudiante</label>
-            <button mat-raised-button color="primary"  class="altura c3" style="padding-bottom: 8px;"><mat-icon>search</mat-icon></button>
-            <input class="input" placeholder="Codigo" autocomplete="off" >
+            <button mat-raised-button color="primary"  (click)="obtenerCandidato(codigo.value)" class="altura c3"><mat-icon>search</mat-icon></button>
+            <input matInput class="input" placeholder="Codigo"  #codigo  autocomplete="off" >
             <label for="">Nombre</label>
-            <input class="input" [value]="candidato.nombre" readonly="true">
+            <input matInput class="input" [value]="usuario.nombre"  readonly="true">
             <label for="">Codigo</label>
-            <input class="input" [value]="candidato.codigo" readonly="true">
+            <input matInput class="input" [value]="usuario.codigo" readonly="true">
             <label for="">Programa</label>
-            <input class="input" [value]="candidato.programa" readonly="true">
+            <input matInput class="input" [value]="usuario.programa" readonly="true">
+            
         </div>
         
         
+        <div class="bottom">
 
+            <button mat-raised-button mat-dialog-close (click)="agregarCandidato(usuario)" >Registrar</button>
+            <button mat-raised-button mat-dialog-close >Cancelar</button>
         
+        </div>
+    
 
-        
+    
     </div>
 </div>
-<div mat-dialog-actions class="bottom">
-    <button mat-raised-button mat-dialog-close cdkFocusInitial>Registrar</button>
-  <button mat-raised-button mat-dialog-close>Cancelar</button>
-  
-</div>
+
+
+
+    
+
+    
 

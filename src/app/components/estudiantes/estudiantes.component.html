@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+<div class="container_dash">
+    <h1 class="titulo">CANDIDATOS</h1>
+    <mat-card>
+        
+            
+                    <div class="contenedor">
+
+                        <div  *ngFor="let element of candidatos">
+                        <img src="../../../assets/img/usuario.jpg" width="30%" >
+                        <h1>{{element.usuario.nombre}}</h1>
+                        <h1>{{element.usuario.codigo}}</h1>
+                        <h1>{{element.usuario.programa}}</h1>
+                        <button mat-raised-button color="primary">votar</button>
+                        </div>
+                    </div>
+                    
+               
+                
+                
+            
+            
+            
+       
+    </mat-card>
+</div>
+
+  

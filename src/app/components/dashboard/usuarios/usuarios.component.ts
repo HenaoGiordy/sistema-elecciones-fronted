@@ -18,17 +18,20 @@ import { DialogoComponent } from './dialogo/dialogo.component';
 export class UsuariosComponent implements OnInit{
 
   listaCandidatos : Candidato[] = []
+
+  
   
   displayedColumns: string[] = ['numero', 'nombre', 'programa', 'codigo', 'acciones'];
   
   // dataSource !: MatTableDataSource<any>;
 
   constructor(private _usuarioService: UsuarioService, private _snackBar:MatSnackBar, public dialog: MatDialog){
- 
+    
   }
 
   ngOnInit(): void {
     this.cargarUsuarios()
+    
   }
    cargarUsuarios(){
     this._usuarioService.getUsuarios().subscribe(candidatos =>{
@@ -56,6 +59,7 @@ export class UsuariosComponent implements OnInit{
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogoComponent, {
       width: '500px',
+      minHeight: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
