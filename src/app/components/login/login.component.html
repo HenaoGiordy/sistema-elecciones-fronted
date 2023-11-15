@@ -1,26 +1,73 @@
-<div class="body">
-    <div class="login">
-        <mat-spinner *ngIf="loading" diameter="50" class="spinner"></mat-spinner>
-
-        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
-            <img src="../../../assets/img/logo.jpg" width="30%" >
-
-            <div class="formulario">
-    
-                <mat-form-field class="ancho" style="margin-top: 20px;">
-                    <mat-label>Usuario</mat-label>
-                    <input matInput autocomplete="off" formControlName="usuario">
-                </mat-form-field>
+<div *ngIf="loading" class="bodySpinner"><mat-spinner  diameter="50" class="spinner"></mat-spinner></div>
+    <mat-tab-group *ngIf="!loading">
         
-                <mat-form-field class="ancho">
-                    <mat-label >Contraseña</mat-label>
-                    <input type="password" matInput autocomplete="off" formControlName="contraseña">
-                </mat-form-field>
-    
-                <button type="submit" class="ancho boton" mat-raised-button color="primary" [disabled]="form.invalid">Ingresar</button>
+        <mat-tab label="Login">
+            <div class="body">
+            <div class="login">
+                
+        
+                <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+                    <img src="../../../assets/img/logo.jpg" width="30%" >
+        
+                    <div class="formulario">
+            
+                        <mat-form-field class="ancho" style="margin-top: 20px;">
+                            <mat-label>Usuario</mat-label>
+                            <input matInput autocomplete="off" formControlName="usuario">
+                        </mat-form-field>
+                
+                        <mat-form-field class="ancho">
+                            <mat-label >Contraseña</mat-label>
+                            <input type="password" matInput autocomplete="off" formControlName="contraseña">
+                        </mat-form-field>
+            
+                        <button type="submit" class="ancho boton" mat-raised-button color="primary" [disabled]="form.invalid">Ingresar</button>
+                    </div>
+                </form>
+                
+        
             </div>
-        </form>
-        
+        </div>
+        </mat-tab>
+    
+        <mat-tab label="Candidatos">
+            <table mat-table [dataSource]="listaCandidatos" class="mat-elevation-z8">
 
-    </div>
-</div>
+        
+      
+                <!-- numero  -->
+                <ng-container matColumnDef="numero">
+                  <th mat-header-cell *matHeaderCellDef> Número </th>
+                  <td mat-cell *matCellDef="let element"> {{element.numeroTarjeton}} </td>
+                </ng-container>
+              
+                <!-- nombre  -->
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                  <td mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
+                </ng-container>
+              
+                <!-- programa  -->
+                <ng-container matColumnDef="programa">
+                  <th mat-header-cell *matHeaderCellDef> Programa </th>
+                  <td mat-cell *matCellDef="let element"> {{element.usuario.programa}} </td>
+                </ng-container>
+              
+                <!-- codigo  -->
+                <ng-container matColumnDef="codigo">
+                  <th mat-header-cell *matHeaderCellDef> Código </th>
+                  <td mat-cell *matCellDef="let element"> {{element.usuario.codigo}} </td>
+                </ng-container>
+        
+                
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            
+        </mat-tab>
+
+        <mat-tab label="Resultados"></mat-tab>
+
+    </mat-tab-group>
+    
