@@ -29,15 +29,24 @@ export class LoginComponent {
  ingresar(){
   const usuario = this.form.value.usuario
   const constraseña = this.form.value.contraseña
-  if(usuario == "Giordy" && constraseña == "12345"){
-    this.loadingSpinner()
+  if(usuario == "Admin" && constraseña == "12345"){
     
+    this.loadingSpinnerAdmin()
     
-  }else{
-    this.error()
+    return
+    
+  }
+  if(usuario == "Estudiante" && constraseña == "12345"){
+
+    this.loadingSpinnerEstudiante()
+    return
+    
+  }
+  else{
+    this.error()  
     this.form.reset()
   }
-
+    
  }
 
  
@@ -47,10 +56,18 @@ export class LoginComponent {
     verticalPosition: 'bottom'})
   }
     
-  loadingSpinner(){
+  loadingSpinnerAdmin(){
     this.loading = true
     setTimeout(()=>{
       this.router.navigate(['dashboard'])
+      
+    },1000)
+  }
+  loadingSpinnerEstudiante(){
+    this.loading = true
+    setTimeout(()=>{
+      this.router.navigate(['estudiante'])
+      
     },1000)
   }
 
