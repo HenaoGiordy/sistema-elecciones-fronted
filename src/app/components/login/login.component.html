@@ -7,7 +7,7 @@
                 
         
                 <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
-                    <img src="../../../assets/img/logo.jpg" width="30%" >
+                    <img src="../../../assets/img/logo.jpg" width="60%" >
         
                     <div class="formulario">
             
@@ -31,6 +31,7 @@
         </mat-tab>
     
         <mat-tab label="Candidatos">
+          <!-- Aquí van los candidatos -->
             <table mat-table [dataSource]="listaCandidatos" class="mat-elevation-z8">
 
         
@@ -67,7 +68,9 @@
             
         </mat-tab>
 
-        <mat-tab label="Resultados"></mat-tab>
+        <mat-tab label="Resultados">
+          <!-- Aquí van los resultados -->
+        </mat-tab>
 
     </mat-tab-group>
     
