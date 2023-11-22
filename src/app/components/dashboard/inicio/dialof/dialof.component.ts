@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialof',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./dialof.component.css']
 })
 export class DialofComponent {
+  constructor(private _snackBar: MatSnackBar){}
 
+  mostrarFinalizar(){
+    this._snackBar.open("Votación ha Finalizada", '', {duration: 5000, horizontalPosition: 'center',
+    verticalPosition: 'bottom'})
+  }
+  
 }
