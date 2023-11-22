@@ -1,13 +1,13 @@
 .body{
     display: grid;
     justify-content: center;
-    margin: 10%;
+    margin: 5%;
 }
 
 .bodyResultado{
     display: grid;
     justify-content: center;
-    margin: 100px;
+    margin: 50px;
 }
 
 .bodySpinner{

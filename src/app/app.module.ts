@@ -9,6 +9,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { DialogoComponent } from './components/dashboard/usuarios/dialogo/dialogo.component';
 import { EstudiantesComponent } from './components/estudiantes/estudiantes.component';
 import { NavComponent } from './components/estudiantes/nav/nav.component';
+import { DialogovotarComponent } from './components/estudiantes/dialogovotar/dialogovotar.component';
 
 
 
@@ -24,6 +25,7 @@ import { NavComponent } from './components/estudiantes/nav/nav.component';
     DialogoComponent,
     EstudiantesComponent,
     NavComponent,
+    DialogovotarComponent,
   ],
   imports: [
     BrowserModule,
