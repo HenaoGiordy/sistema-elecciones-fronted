@@ -20,10 +20,9 @@ export class LoginComponent implements OnInit{
   displayedColumns: string[] = ['numero', 'nombre', 'programa', 'codigo'];
 
   //variables para resultados
-  single : resultado[] = [{"name" : "Giordy", "value" : 10},{"name" : "Jaider", "value" : 10}]; 
+  single : resultado[] = [{"name" : "Giordy", "value" : 10},{"name" : "Jaider", "value" : 8},{"name" : "Jose", "value" : 5}]; 
   view: [number, number] = [700, 400];
-
-  cardColor : string = '#232837';
+  cardColor : string = '#525CF5';
   
   //fin
 
@@ -92,12 +91,5 @@ export class LoginComponent implements OnInit{
     
   }
   
-
-  getCandidatos(){
-    
-
-    
-
-  }
 
 }
