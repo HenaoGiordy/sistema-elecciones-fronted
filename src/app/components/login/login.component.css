@@ -4,6 +4,12 @@
     margin: 10%;
 }
 
+.bodyResultado{
+    display: grid;
+    justify-content: center;
+    margin: 100px;
+}
+
 .bodySpinner{
     display: flex;
     justify-content: center;

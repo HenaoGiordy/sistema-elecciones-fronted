@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Candidato } from 'src/app/interfaces/candidato';
+import { resultado } from 'src/app/interfaces/resultado';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
@@ -17,7 +18,16 @@ export class LoginComponent implements OnInit{
   form:FormGroup;
   listaCandidatos !: Candidato[];
   displayedColumns: string[] = ['numero', 'nombre', 'programa', 'codigo'];
+
+  //variables para resultados
+  single : resultado[] = [{"name" : "Giordy", "value" : 10},{"name" : "Jaider", "value" : 10}]; 
+  view: [number, number] = [700, 400];
+
+  cardColor : string = '#232837';
   
+  //fin
+
+
  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router:Router, private _usuarioService:UsuarioService){
   this.form = fb.group(
     {
@@ -76,10 +86,18 @@ export class LoginComponent implements OnInit{
   }
 
   getUsuarios(){
-
     this._usuarioService.getUsuarios().subscribe(candidatos =>{
       this.listaCandidatos = candidatos
     })
+    
+  }
+  
+
+  getCandidatos(){
+    
+
+    
+
   }
 
 }

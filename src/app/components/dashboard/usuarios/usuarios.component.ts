@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Candidato } from 'src/app/interfaces/candidato';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogoComponent } from './dialogo/dialogo.component';
+import { Route, Router } from '@angular/router';
 
 
 
@@ -25,7 +26,7 @@ export class UsuariosComponent implements OnInit{
   
   // dataSource !: MatTableDataSource<any>;
 
-  constructor(private _usuarioService: UsuarioService, private _snackBar:MatSnackBar, public dialog: MatDialog){
+  constructor(private _usuarioService: UsuarioService, private route:Router ,private _snackBar:MatSnackBar, public dialog: MatDialog ){
     
   }
 
@@ -43,8 +44,10 @@ export class UsuariosComponent implements OnInit{
    }
 
   eliminarUsuario(index:number){
-    this._usuarioService.eliminarUsuario(index);
+    this._usuarioService.eliminarUsuario(index).subscribe();
+    this.route.navigate(["/dashboard/usuarios"])
     this.cargarUsuarios()
+    
     this._snackBar.open("El usuario ha sido eliminado con éxito",'',
     {duration: 3000,
     horizontalPosition: 'center',

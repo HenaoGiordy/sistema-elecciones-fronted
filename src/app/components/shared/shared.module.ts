@@ -15,6 +15,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatDialogModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    NgxChartsModule
   ],
   exports:[
     ReactiveFormsModule,
@@ -52,7 +55,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatDialogModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    NgxChartsModule
+    
   ]
 })
 export class SharedModule { }

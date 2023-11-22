@@ -42,6 +42,6 @@ export class UsuarioService {
   }
 
   eliminarUsuario(index:number){
-    
+    return this.http.delete(`http://localhost:8080/candidato/delete/${index}`)
   }
 }

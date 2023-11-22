@@ -5,6 +5,6 @@ export interface Candidato{
     "nombre" : string,
     "programa": string
   }
-    
-  
+  "votos" : number
+
 }

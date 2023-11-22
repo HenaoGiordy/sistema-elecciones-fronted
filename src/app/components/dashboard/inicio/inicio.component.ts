@@ -3,6 +3,10 @@ import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialoComponent } from './dialo/dialo.component';
+import { DialofComponent } from './dialof/dialof.component';
+
 
 @Component({
   selector: 'app-inicio',
@@ -17,7 +21,7 @@ export class InicioComponent implements OnInit{
  
   
 
-  constructor(private servicio:UsuarioService ){}
+  constructor(private servicio:UsuarioService , public dialog: MatDialog){}
   
   ngOnInit(): void {
     
@@ -58,6 +62,24 @@ export class InicioComponent implements OnInit{
         
       }
     )
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialoComponent, {
+      width: '250',
+      
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  openDialogF(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialofComponent, {
+      width: '250',
+      
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 
   

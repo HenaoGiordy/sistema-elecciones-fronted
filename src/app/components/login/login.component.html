@@ -70,6 +70,16 @@
 
         <mat-tab label="Resultados">
           <!-- Aquí van los resultados -->
+          <h1 style="text-align: center; margin-top: 100px;">Resultados Representación Estudiantil</h1>
+          <div class="bodyResultado">
+            
+            <ngx-charts-number-card
+                [view]="view"
+                [results]="single"
+                [cardColor]="cardColor"
+                >
+            </ngx-charts-number-card>
+          </div>
         </mat-tab>
 
     </mat-tab-group>

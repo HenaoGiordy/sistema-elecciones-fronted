@@ -16,6 +16,7 @@ import { NavComponent } from './components/estudiantes/nav/nav.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { NavComponent } from './components/estudiantes/nav/nav.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

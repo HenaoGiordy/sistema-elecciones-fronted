@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
+
 @Component({
   selector: 'app-dialogo',
   templateUrl: './dialogo.component.html',
@@ -17,7 +18,7 @@ export class DialogoComponent implements OnInit{
   
   
 
-  constructor(private usuarioService: UsuarioService, ){
+  constructor(private usuarioService: UsuarioService){
     
   }
   ngOnInit(): void {
@@ -28,21 +29,16 @@ export class DialogoComponent implements OnInit{
  
 
   obtenerCandidato(id:String){
-    
     this.usuarioService.buscarUsuario(id).subscribe( usuario=> {
       this.usuario = usuario
-      
-      
     })
     
   }
 
   agregarCandidato(usuario:Usuario){
-    this.usuarioService.agregarCandidato(this.usuario).subscribe(user =>{
-      
+    this.usuarioService.agregarCandidato(this.usuario).subscribe(user =>{ 
     })
     
   }
 
-  
 }
