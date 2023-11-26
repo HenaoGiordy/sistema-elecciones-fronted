@@ -38,7 +38,9 @@ export class UsuarioService {
       "nombre" :usuario.nombre,
       "programa" : usuario.programa,
       
-     }})
+     },
+     "votos" : 0
+    })
   }
 
   eliminarUsuario(index:number){
