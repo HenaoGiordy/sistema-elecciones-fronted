@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Candidato } from 'src/app/interfaces/candidato';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogovotarComponent } from './dialogovotar/dialogovotar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estudiantes',
@@ -10,9 +12,10 @@ import { DialogovotarComponent } from './dialogovotar/dialogovotar.component';
   styleUrls: ['./estudiantes.component.css']
 })
 export class EstudiantesComponent implements OnInit{
+  
   candidatos !: Candidato[] 
 
-  constructor(private candidatoService:UsuarioService, public dialog: MatDialog){}
+  constructor(private candidatoService:UsuarioService, public dialog: MatDialog, private router:Router, private _snackBar: MatSnackBar){}
   ngOnInit(): void {
     this.getCandidatos()
   }
@@ -30,6 +33,14 @@ export class EstudiantesComponent implements OnInit{
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  votar(candidato:Candidato){
+    
+    this.candidatoService.votar(candidato).subscribe();
+    this.router.navigate(["login"])
+    this._snackBar.open("Gracias por votar", '', {duration: 5000, horizontalPosition: 'center',
+    verticalPosition: 'bottom'})
   }
   
 }

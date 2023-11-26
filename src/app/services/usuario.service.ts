@@ -44,4 +44,13 @@ export class UsuarioService {
   eliminarUsuario(index:number){
     return this.http.delete(`http://localhost:8080/candidato/delete/${index}`)
   }
+
+
+  votar(candidato:Candidato){
+    return this.http.put(`http://localhost:8080/candidato/votar/${candidato.numeroTarjeton}`,{})
+  }
+
+  logearse(codigo:string, password:string):Observable<boolean>{
+    return this.http.post<boolean>(`http://localhost:8080/usuario/ingresar/${codigo}/${password}`, {});
+  }
 }

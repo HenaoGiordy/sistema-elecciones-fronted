@@ -32,39 +32,28 @@
     
         <mat-tab label="Candidatos">
           <!-- Aquí van los candidatos -->
-            <table mat-table [dataSource]="listaCandidatos" class="mat-elevation-z8">
-
-        
-      
-                <!-- numero  -->
-                <ng-container matColumnDef="numero">
-                  <th mat-header-cell *matHeaderCellDef> Número </th>
-                  <td mat-cell *matCellDef="let element"> {{element.numeroTarjeton}} </td>
-                </ng-container>
+          <div class="bodyResultado">
+            <mat-grid-list *ngFor="let element of listaCandidatos" cols="3" rowHeight="20:20">
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title-group>
+                    <mat-card-title>{{element.usuario.nombre}}</mat-card-title>
+                    <mat-card-title>{{element.usuario.programa}}</mat-card-title>
+                    <img mat-card-xl-image src="../../../assets/img/usuario.jpg" >
+                    <mat-card-subtitle># {{element.numeroTarjeton}}</mat-card-subtitle>
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-card-subtitle>
+                    propuesta
+                  </mat-card-subtitle>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                </mat-card-content>
+              </mat-card>
               
-                <!-- nombre  -->
-                <ng-container matColumnDef="nombre">
-                  <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                  <td mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
-                </ng-container>
-              
-                <!-- programa  -->
-                <ng-container matColumnDef="programa">
-                  <th mat-header-cell *matHeaderCellDef> Programa </th>
-                  <td mat-cell *matCellDef="let element"> {{element.usuario.programa}} </td>
-                </ng-container>
-              
-                <!-- codigo  -->
-                <ng-container matColumnDef="codigo">
-                  <th mat-header-cell *matHeaderCellDef> Código </th>
-                  <td mat-cell *matCellDef="let element"> {{element.usuario.codigo}} </td>
-                </ng-container>
-        
-                
-              
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
+            </mat-grid-list>
+            
+          </div>
             
         </mat-tab>
 
@@ -72,13 +61,25 @@
           <!-- Aquí van los resultados -->
           <h1 style="text-align: center; margin-top: 100px;">Resultados Representación Estudiantil</h1>
           <div class="bodyResultado">
+            <mat-grid-list *ngFor="let element of listaCandidatos" cols="3" rowHeight="20:20">
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title-group>
+                    <mat-card-title>{{element.usuario.nombre}}</mat-card-title>
+                    <mat-card-title>{{element.usuario.programa}}</mat-card-title>
+                    
+                    <mat-card-subtitle># {{element.numeroTarjeton}}</mat-card-subtitle>
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-card-footer>VOTOS : {{element.votos}}</mat-card-footer>
+                  
+                </mat-card-content>
+              </mat-card>
+              
+            </mat-grid-list>
             
-            <ngx-charts-number-card
-                [view]="view"
-                [results]="single"
-                [cardColor]="cardColor"
-                >
-            </ngx-charts-number-card>
+            
           </div>
         </mat-tab>
 

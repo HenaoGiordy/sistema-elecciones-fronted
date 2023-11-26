@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Candidato } from 'src/app/interfaces/candidato';
 import { resultado } from 'src/app/interfaces/resultado';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -14,13 +15,13 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  loading = false;
+  loading = false
   form:FormGroup;
   listaCandidatos !: Candidato[];
   displayedColumns: string[] = ['numero', 'nombre', 'programa', 'codigo'];
 
   //variables para resultados
-  single : resultado[] = [{"name" : "Giordy", "value" : 10},{"name" : "Jaider", "value" : 8},{"name" : "Jose", "value" : 5}]; 
+  single : resultado[] = []; 
   view: [number, number] = [700, 400];
   cardColor : string = '#525CF5';
   
@@ -37,29 +38,46 @@ export class LoginComponent implements OnInit{
  }
   ngOnInit(): void {
     this.getUsuarios();
+    
   }
 
  ingresar(){
   const usuario = this.form.value.usuario
   const constraseña = this.form.value.contraseña
-  if(usuario == "Admin" && constraseña == "12345"){
-    
-    this.loadingSpinnerAdmin()
-    
-    return
-    
-  }
-  if(usuario == "Estudiante" && constraseña == "12345"){
+  
+  this._usuarioService.logearse(this.form.value.usuario, this.form.value.contraseña).subscribe(respuesta => {if(respuesta)
+    {
+      this.loadingSpinnerEstudiante()
+      return
+    }else{
+      if(usuario == "Admin" && constraseña == "12345"){
+        this.loadingSpinnerAdmin()
+        return
+      }else{
+        this.error()       
+        this.form.reset()
+      }
+    }
+    })
+   
+  
 
-    this.loadingSpinnerEstudiante()
-    return
+// console.log(this.login)
+// if(this.login){
+
+//   this.loadingSpinnerEstudiante()
+  
+//   return
+  
+// }if(usuario == "Admin" && constraseña =="12345"){
+//   this.loadingSpinnerAdmin()
+//   return
+// }
+// else{
+//     this.error()  
+//     this.form.reset()
     
-  }
-  else{
-    this.error()  
-    this.form.reset()
-  }
-    
+//   }  
  }
 
  
@@ -91,5 +109,6 @@ export class LoginComponent implements OnInit{
     
   }
   
+
 
 }

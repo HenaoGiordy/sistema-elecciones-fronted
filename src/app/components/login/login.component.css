@@ -6,6 +6,8 @@
 
 .bodyResultado{
     display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
     justify-content: center;
     margin: 50px;
 }
