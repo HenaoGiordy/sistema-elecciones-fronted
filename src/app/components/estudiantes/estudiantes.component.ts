@@ -47,9 +47,10 @@ export class EstudiantesComponent implements OnInit{
 
   
   votar(candidato:Candidato, codigo:string|null){
-    console.log(this.codigo)
+    
     this.candidatoService.votar(candidato, codigo).subscribe();
     this.router.navigate(["login"])
+    
     this._snackBar.open("Gracias por votar", '', {duration: 5000, horizontalPosition: 'center',
     verticalPosition: 'bottom'})
   }

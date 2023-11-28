@@ -37,6 +37,7 @@ export class DialogoComponent implements OnInit{
 
   agregarCandidato(usuario:Usuario){
     this.usuarioService.agregarCandidato(this.usuario).subscribe(user =>{ 
+      window.location.reload()
     })
     
   }

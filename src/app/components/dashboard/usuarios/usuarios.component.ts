@@ -47,9 +47,7 @@ export class UsuariosComponent implements OnInit{
 
   eliminarUsuario(index:number){
     this._usuarioService.eliminarUsuario(index).subscribe();
-    this.route.navigate(["/dashboard/usuarios"])
-    this.cargarUsuarios()
-    
+    window.location.reload()
     this._snackBar.open("El usuario ha sido eliminado con éxito",'',
     {duration: 3000,
     horizontalPosition: 'center',
@@ -71,6 +69,7 @@ export class UsuariosComponent implements OnInit{
     dialogo.afterClosed().subscribe(e => {
       if(e){
         this.eliminarUsuario(index)
+        
       }
     })
   }
