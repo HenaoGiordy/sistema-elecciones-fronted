@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogovotarComponent } from './dialogovotar/dialogovotar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-estudiantes',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 export class EstudiantesComponent implements OnInit{
   
   candidatos !: Candidato[] 
+  codigo : string | null = localStorage.getItem("usuario")
 
   constructor(private candidatoService:UsuarioService, public dialog: MatDialog, private router:Router, private _snackBar: MatSnackBar){}
   ngOnInit(): void {
@@ -26,18 +28,27 @@ export class EstudiantesComponent implements OnInit{
       this.candidatos = candidatos
     }) 
   }
-  openDialogV(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogovotarComponent, {
+
+
+  openDialogV(enterAnimationDuration: string, exitAnimationDuration: string, candidato:Candidato, codigo:string|null): void {
+    const dialo = this.dialog.open(DialogovotarComponent, {
       width: '250',
-      
+      data: {candidato},
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialo.afterClosed().subscribe(e => {
+      if(e){
+        this.votar(candidato , codigo);
+      }
+    })
   }
 
-  votar(candidato:Candidato){
-    
-    this.candidatoService.votar(candidato).subscribe();
+  
+  votar(candidato:Candidato, codigo:string|null){
+    console.log(this.codigo)
+    this.candidatoService.votar(candidato, codigo).subscribe();
     this.router.navigate(["login"])
     this._snackBar.open("Gracias por votar", '', {duration: 5000, horizontalPosition: 'center',
     verticalPosition: 'bottom'})

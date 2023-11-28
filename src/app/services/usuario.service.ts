@@ -48,8 +48,8 @@ export class UsuarioService {
   }
 
 
-  votar(candidato:Candidato){
-    return this.http.put(`http://localhost:8080/candidato/votar/${candidato.numeroTarjeton}`,{})
+  votar(candidato:Candidato, codigo:any){
+    return this.http.put(`http://localhost:8080/candidato/votar/${candidato.numeroTarjeton}/${codigo}`,{})
   }
 
   logearse(codigo:string, password:string):Observable<boolean>{

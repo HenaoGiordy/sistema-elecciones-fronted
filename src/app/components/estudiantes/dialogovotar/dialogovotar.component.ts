@@ -24,9 +24,9 @@ export class DialogovotarComponent {
     verticalPosition: 'bottom'})
   }
 
-  votar(candidato:Candidato){
+  // votar(candidato:Candidato){
     
-    this.usuarioService.votar(candidato).subscribe();
-  }
+  //   this.usuarioService.votar(candidato).subscribe();
+  // }
 
 }

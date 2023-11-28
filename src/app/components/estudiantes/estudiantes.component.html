@@ -8,9 +8,9 @@
                         <div *ngFor="let element of candidatos">
                         <img src="../../../assets/img/usuario.jpg" width="30%" >
                         <h1 >#{{element.numeroTarjeton}}</h1>
-                        <h1>{{element.usuario.nombre}}</h1>
-                        <h1>{{element.usuario.programa}}</h1>
-                        <button  (click)="votar(element)" mat-raised-button color="primary">votar</button>
+                        <h1 >{{element.usuario.nombre}}</h1>
+                        <h1 >{{element.usuario.programa}}</h1>
+                        <button  (click)="openDialogV('0ms', '0ms',element , codigo)" mat-raised-button color="primary">votar</button>
                         </div>
                     </div>
   

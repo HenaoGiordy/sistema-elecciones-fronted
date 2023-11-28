@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { DialoComponent } from './inicio/dialo/dialo.component';
 import { DialofComponent } from './inicio/dialof/dialof.component';
+import { DialogoEComponent } from './usuarios/dialogo-e/dialogo-e.component';
 
 
 
@@ -20,6 +21,7 @@ import { DialofComponent } from './inicio/dialof/dialof.component';
     UsuariosComponent,
     DialoComponent,
     DialofComponent,
+    DialogoEComponent,
     
   ],
   imports: [

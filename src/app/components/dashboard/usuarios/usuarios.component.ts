@@ -6,6 +6,8 @@ import { Candidato } from 'src/app/interfaces/candidato';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogoComponent } from './dialogo/dialogo.component';
 import { Route, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DialogoEComponent } from './dialogo-e/dialogo-e.component';
 
 
 
@@ -59,13 +61,27 @@ export class UsuariosComponent implements OnInit{
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogoComponent, {
+  dialogoEliminar(enterAnimationDuration: string, exitAnimationDuration: string, index:number){
+    const dialogo = this.dialog.open(DialogoEComponent, {
+      width: '300px',
+      minHeight: '100px',
+      enterAnimationDuration,
+      exitAnimationDuration
+    })
+    dialogo.afterClosed().subscribe(e => {
+      if(e){
+        this.eliminarUsuario(index)
+      }
+    })
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string):void {
+      this.dialog.open(DialogoComponent, {
       width: '500px',
       minHeight: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
-    });
+    })
   }
 }
 

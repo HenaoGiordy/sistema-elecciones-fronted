@@ -45,44 +45,40 @@ export class LoginComponent implements OnInit{
   const usuario = this.form.value.usuario
   const constraseña = this.form.value.contraseña
   
-  this._usuarioService.logearse(this.form.value.usuario, this.form.value.contraseña).subscribe(respuesta => {if(respuesta)
+  this._usuarioService.logearse(this.form.value.usuario, this.form.value.contraseña).subscribe(respuesta => 
+    {if(respuesta)
     {
+      localStorage.setItem("usuario", usuario);
       this.loadingSpinnerEstudiante()
       return
     }else{
-      if(usuario == "Admin" && constraseña == "12345"){
-        this.loadingSpinnerAdmin()
-        return
-      }else{
-        this.error()       
+      if(respuesta == null){
+        this.yavoto()       
         this.form.reset()
+
+      }else{
+        if(usuario == "Admin" && constraseña == "12345"){
+          this.loadingSpinnerAdmin()
+          return
+        }else{
+          this.error()       
+          this.form.reset()
+        }
       }
+     
     }
     })
    
-  
-
-// console.log(this.login)
-// if(this.login){
-
-//   this.loadingSpinnerEstudiante()
-  
-//   return
-  
-// }if(usuario == "Admin" && constraseña =="12345"){
-//   this.loadingSpinnerAdmin()
-//   return
-// }
-// else{
-//     this.error()  
-//     this.form.reset()
-    
-//   }  
  }
 
  
   error(){
     this._snackBar.open("Usuario o contraseña incorrectos", '', 
+    {duration: 5000, horizontalPosition: 'center',
+    verticalPosition: 'bottom'})
+  }
+  yavoto(){
+    this._snackBar.open("El usuario ya votó", '', 
     {duration: 5000, horizontalPosition: 'center',
     verticalPosition: 'bottom'})
   }
