@@ -14,97 +14,124 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   loading = false
-  form:FormGroup;
+  form: FormGroup;
   listaCandidatos !: Candidato[];
   displayedColumns: string[] = ['numero', 'nombre', 'programa', 'codigo'];
 
   //variables para resultados
-  single : resultado[] = []; 
+  single: resultado[] = [];
   view: [number, number] = [700, 400];
-  cardColor : string = '#525CF5';
-  
+  cardColor: string = '#525CF5';
+
   //fin
 
 
- constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router:Router, private _usuarioService:UsuarioService){
-  this.form = fb.group(
-    {
-      usuario:['', Validators.required], 
-      contraseña:['', Validators.required]
-    }
-  )
- }
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private _usuarioService: UsuarioService) {
+    this.form = fb.group(
+      {
+        usuario: ['', Validators.required],
+        contraseña: ['', Validators.required]
+      }
+    )
+  }
   ngOnInit(): void {
     this.getUsuarios();
-    
+
   }
 
- ingresar(){
-  const usuario = this.form.value.usuario
-  const constraseña = this.form.value.contraseña
-  
-  this._usuarioService.logearse(this.form.value.usuario, this.form.value.contraseña).subscribe(respuesta => 
-    {if(respuesta)
-    {
-      localStorage.setItem("usuario", usuario);
-      this.loadingSpinnerEstudiante()
-      return
-    }else{
-      if(respuesta == null){
-        this.yavoto()       
-        this.form.reset()
+  ingresar() {
+    const usuario = this.form.value.usuario
+    const constraseña = this.form.value.contraseña
 
-      }else{
-        if(usuario == "Admin" && constraseña == "12345"){
+    this._usuarioService.logearse(this.form.value.usuario, this.form.value.contraseña).subscribe(respuesta => {
+      if (usuario == "Admin") {
+        if(constraseña == "12345"){
           this.loadingSpinnerAdmin()
           return
         }else{
-          this.error()       
+          this.error()
           this.form.reset()
         }
+        
       }
-     
-    }
+      if (localStorage.getItem("votacion") == "true") {
+        if (respuesta) {
+          localStorage.setItem("usuario", usuario);
+          this.loadingSpinnerEstudiante()
+          return
+        } else {
+          if (respuesta == null) {
+            this.yavoto()
+            this.form.reset()
+
+          } else {
+
+            this.error()
+            this.form.reset()
+
+          }
+
+
+        }
+      } if(localStorage.getItem("votacion") != "true" && usuario != "Admin") {
+        this.votacionNoiniciada()
+        this.form.reset()
+      }
+
     })
-   
- }
 
- 
-  error(){
-    this._snackBar.open("Usuario o contraseña incorrectos", '', 
-    {duration: 5000, horizontalPosition: 'center',
-    verticalPosition: 'bottom'})
+
+
+
   }
-  yavoto(){
-    this._snackBar.open("El usuario ya votó", '', 
-    {duration: 5000, horizontalPosition: 'center',
-    verticalPosition: 'bottom'})
+
+
+  error() {
+    this._snackBar.open("Usuario o contraseña incorrectos", '',
+      {
+        duration: 5000, horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
   }
-    
-  loadingSpinnerAdmin(){
+  yavoto() {
+    this._snackBar.open("El usuario ya votó", '',
+      {
+        duration: 5000, horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
+  }
+  votacionNoiniciada() {
+    this._snackBar.open("La votacion no está disponible", '',
+      {
+        duration: 5000, horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
+  }
+
+  loadingSpinnerAdmin() {
     this.loading = true
-    setTimeout(()=>{
+    setTimeout(() => {
       this.router.navigate(['dashboard'])
-      
-    },1000)
+
+    }, 1000)
   }
-  loadingSpinnerEstudiante(){
+  loadingSpinnerEstudiante() {
     this.loading = true
-    setTimeout(()=>{
+    setTimeout(() => {
       this.router.navigate(['estudiante'])
-      
-    },1000)
+
+    }, 1000)
   }
 
-  getUsuarios(){
-    this._usuarioService.getUsuarios().subscribe(candidatos =>{
+  getUsuarios() {
+    this._usuarioService.getUsuarios().subscribe(candidatos => {
       this.listaCandidatos = candidatos
     })
-    
+
   }
-  
+
 
 
 }

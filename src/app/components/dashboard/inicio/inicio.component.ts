@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialoComponent } from './dialo/dialo.component';
 import { DialofComponent } from './dialof/dialof.component';
+import { Candidato } from 'src/app/interfaces/candidato';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class InicioComponent implements OnInit{
   public numeroEstudiantes !: number  ;
 
  
-  
+  public ganador !: any;
 
   constructor(private servicio:UsuarioService , public dialog: MatDialog){}
   
@@ -65,21 +66,34 @@ export class InicioComponent implements OnInit{
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialoComponent, {
+    const dialogo = this.dialog.open(DialoComponent, {
       width: '250',
       
       enterAnimationDuration,
       exitAnimationDuration,
     });
+    dialogo.afterClosed().subscribe(resp => {
+      localStorage.setItem("votacion", "true");
+    })
   }
 
   openDialogF(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialofComponent, {
+    const dialogo = this.dialog.open(DialofComponent, {
       width: '250',
       
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogo.afterClosed().subscribe( r => {
+      if(r){
+        this.servicio.ganador().subscribe(ganador =>{
+
+          this.ganador = ganador
+        })
+      }
+        
+    })
   }
 
   

@@ -55,4 +55,8 @@ export class UsuarioService {
   logearse(codigo:string, password:string):Observable<boolean>{
     return this.http.post<boolean>(`http://localhost:8080/usuario/ingresar/${codigo}/${password}`, {});
   }
+
+  ganador(){
+    return this.http.get("http://localhost:8080/candidato/ganador")
+  }
 }
