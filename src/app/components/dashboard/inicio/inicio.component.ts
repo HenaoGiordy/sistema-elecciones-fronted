@@ -88,7 +88,7 @@ export class InicioComponent implements OnInit{
     dialogo.afterClosed().subscribe( r => {
       if(r){
         this.servicio.ganador().subscribe(ganador =>{
-
+          localStorage.setItem("votacion", "false")
           this.ganador = ganador
         })
       }
