@@ -1,0 +1,32 @@
+<div class="container_dash">
+    <mat-card >
+        <mat-card-content>
+            <h1 class="titulo">Votación</h1>
+            <div class="lista" >
+                <div class="recuadro">
+                    <h2>Numero de Candidatos Registrados</h2>
+                    <p>Total:  {{numeroCandidatos}}</p>
+                </div>
+
+                <div class="recuadro">
+                    <h2>Numero de Estudiantes Registrados</h2>
+                    <p>Total : {{numeroEstudiantes}}</p>
+                </div>
+            </div>
+            <div class="recuadroPeque" *ngIf="ganador != null">
+                <h2 >Ganador: {{ganador.usuario.nombre}}</h2>
+                <p> VOTOS : {{ganador.votos}}</p>
+            </div>
+
+
+            <div class="botones">
+                <button (click)="openDialog('0ms', '0ms')" mat-raised-button color="primary" >Iniciar Votacion</button>
+                <button mat-raised-button (click)="openDialogF('0ms', '0ms')">Finalizar</button>
+            </div>
+        </mat-card-content>
+
+        
+    </mat-card>
+
+</div>
+  

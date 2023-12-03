@@ -1,0 +1,38 @@
+<h1 mat-dialog-title style="text-align: center;">AGREGAR CANDIDATO</h1>
+<div mat-dialog-content>
+    <div class="formulario" >
+        
+        
+        <div  class="campos">
+            
+            <label class="c1">Buscar Estudiante</label>
+            <button mat-raised-button color="primary" (click)="obtenerCandidato(codigo.value)" class="altura c3"><mat-icon>search</mat-icon></button>
+            <input matInput class="input" placeholder="Codigo"  #codigo  autocomplete="off" >
+            <label for="">Nombre</label>
+            <input matInput class="input"  [value]="usuario.nombre"  readonly="true">
+            <label for="">Codigo</label>
+            <input matInput class="input" [value]="usuario.codigo" readonly="true">
+            <label for="">Programa</label>
+            <input matInput class="input" [value]="usuario.programa" readonly="true">
+            
+        </div>
+        
+        
+        <div class="bottom">
+
+            <button type="submit" mat-raised-button mat-dialog-close (click)="agregarCandidato(usuario)" >Registrar</button>
+            <button type="submit" mat-raised-button mat-dialog-close >Cancelar</button>
+        
+        </div>
+    
+
+    
+    </div>
+</div>
+
+
+
+    
+
+    
+

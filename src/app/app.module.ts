@@ -4,15 +4,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
+import { SharedModule } from './components/shared/shared.module';
+import { DialogoComponent } from './components/dashboard/usuarios/dialogo/dialogo.component';
+import { EstudiantesComponent } from './components/estudiantes/estudiantes.component';
+import { NavComponent } from './components/estudiantes/nav/nav.component';
+import { DialogovotarComponent } from './components/estudiantes/dialogovotar/dialogovotar.component';
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    DialogoComponent,
+    EstudiantesComponent,
+    NavComponent,
+    DialogovotarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

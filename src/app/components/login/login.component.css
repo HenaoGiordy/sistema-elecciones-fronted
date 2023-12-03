@@ -1,0 +1,54 @@
+.body{
+    display: grid;
+    justify-content: center;
+    margin: 5%;
+}
+
+.bodyResultado{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+    justify-content: center;
+    margin: 50px;
+}
+
+.bodySpinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login{
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width: 330px;
+    
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.ancho{
+    width: 80%;
+}
+
+.boton{
+    height: 50px;
+}
+
+.spinner{
+    margin: 0 auto;
+}
+
+
+.example-card{
+    width: 400px;
+    
+}
+
